@@ -1,0 +1,643 @@
+/*****************************************************************
+ * Assignment #1
+ * Name: Emily Lobel
+ * E-mail: elobel@brynmawr.edu
+ * Course: CS 110-01 DK
+ * Date Submitted: September 13, 2016
+ *
+ * This file contains the source code for my rendition 
+ * in Processing of painter Edward Hopper's "Early Sunday Morning."
+ ******************************************************************/
+
+
+// set-up of code
+void setup() {
+  size(1100, 700);
+  background(158, 51, 5);
+}
+
+// draw
+void draw() { 
+  noLoop();
+  // sky color
+  noStroke();
+  smooth();
+  fill(176, 187, 193); 
+  rectMode(CORNER);
+  rect(0, 0, 1100, 150);
+  // darker sky color on left
+  noStroke();
+  fill(132, 174, 197); 
+  rect(0, 0, 300, 150);
+  // color gradient transition back to original sky color
+  fill(133, 175, 196);
+  rect(300, 0, 12, 150);
+  fill(138, 176, 195);
+  rect(312, 0, 12, 150);
+  fill(145, 177, 194);
+  rect(324, 0, 12, 150);
+  fill(150, 178, 193);
+  rect(336, 0, 12, 150);
+  fill(157, 179, 193);
+  rect(348, 0, 12, 150);
+  fill(163, 182, 193);
+  rect(358, 0, 4, 150);
+  fill(164, 183, 193);
+  rect(360, 0, 12, 150);
+  fill(170, 185, 193);
+  rect(372, 0, 12, 150);
+
+  // code for lighter sky color on right
+  noStroke();
+  fill(214, 216, 211);
+  rect(700, 0, 400, 150);
+  // color gradient transition back to original sky color
+  fill(212, 213, 209);
+  rect(700, 0, 10, 150);
+  fill(210, 210, 207);
+  rect(690, 0, 10, 150);
+  fill(206, 207, 205);
+  rect(680, 0, 10, 150);
+  fill(202, 204, 202);
+  rect(670, 0, 10, 150);
+  fill(197, 200, 200);
+  rect(660, 0, 10, 150);
+  fill(193, 196, 197);
+  rect(650, 0, 10, 150);
+  fill(187, 193, 193);
+  rect(640, 0, 10, 150);
+  fill(185, 190, 193);
+  rect(630, 0, 10, 150);
+  fill(183, 189, 193);
+  rect(620, 0, 10, 150);
+  fill(180, 188, 193);
+  rect(615, 0, 5, 150);
+  fill(178, 187, 193);
+  rect(610, 0, 10, 150);
+
+  pushMatrix();
+  translate(0, -50);
+  // chimney -- brown rectangle upper right corner
+  noSmooth();
+  fill(63, 51, 31, 255);
+  beginShape();
+  vertex(900, 0);
+  vertex(1100, 0);
+  vertex(1100, 150);
+  vertex(900, 150);
+  endShape(CLOSE);
+  // bottom shade
+  fill(35, 28, 17);
+  rect(900, 140, 210, 10);
+  // gradient transition back to original chimney color
+  fill(38, 31, 21);
+  rect(900, 135, 200, 5);
+  fill(42, 34, 23);
+  rect(900, 130, 200, 5);
+  fill(46, 38, 25);
+  rect(900, 125, 200, 5);
+  fill(50, 42, 27);
+  rect(900, 120, 200, 5);
+  fill(55, 46, 29);
+  rect(900, 115, 200, 5);
+  fill(58, 49, 30);
+  rect(900, 110, 200, 5);
+  // flecks of color on the chimney
+  strokeWeight(5);
+  // fleck1 (leftmost line)
+  stroke(67, 54, 35);
+  line(930, 30, 930, 80);
+  // fleck2 (bright line)
+  stroke(70, 62, 43);
+  line(950, 10, 950, 100);
+  // gradient fade left fleck2
+  stroke(65, 59, 40); 
+  line(945, 10, 945, 100);
+  strokeWeight(2); 
+  stroke(64, 54, 35);
+  line(942, 10, 942, 100);
+  // gradient fade right fleck2 
+  strokeWeight(5); 
+  stroke(65, 59, 40);
+  line(955, 10, 955, 100);
+  strokeWeight(2);
+  stroke(64, 54, 35);
+  line(958, 10, 958, 100);
+
+  // fleck3 (small left rectangle)
+  noStroke();
+  noSmooth();
+  fill(58, 44, 22);
+  rect(970, 40, 30, 55, 10);
+  // fleck4 (small middle rectangle)
+  fill(55, 50, 30);
+  rect(1000, 70, 50, 20, 15);
+  // fleck5 (small right rectangle)
+  fill(58, 44, 22);
+  rect(1040, 40, 30, 55, 10);
+  // fleck6 (large overlapping middle rectangle)
+  fill(58, 50, 25);
+  rect(990, 10, 55, 50, 10);
+  // fleck7 (large overlapping right rectangle)
+  fill(60, 45, 20);
+  rect(1060, 15, 40, 70, 10);
+
+
+  // very top of building
+  smooth();
+  fill(110, 53, 16);
+  noStroke();
+  rect(0, 150, 1100, 10);
+  fill(37, 35, 22);
+  rect(0, 160, 1100, 5);
+  fill(56, 55, 44);
+  rect(0, 165, 1100, 5);
+  fill(158, 51, 5);
+  rect(0, 170, 1100, 45);
+  // green awning color
+  color greenawning = color(75, 66, 32);
+  color shadowawning = color(30, 32, 20);
+  // green awning 1
+  fill(greenawning);
+  quad(0, 170, 10, 170, 45, 210, 0, 210);
+  stroke(13, 59, 6);
+  strokeWeight(3);
+  line(0, 190, 15, 210);
+  // bottom of awning under shadow
+  noStroke();
+  quad(45, 210, 120, 210, 100, 170, 30, 190);
+  // shadow1
+  fill(shadowawning);
+  quad(10, 170, 30, 190, 110, 190, 100, 170);
+  quad(90, 190, 110, 190, 120, 210, 90, 190);
+  // green awning 2
+  fill(greenawning);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow 2
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 3
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 3
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 4
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 4
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 5
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 5
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 6
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 6
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 7
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 7
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 8
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 8
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 9
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 9
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  // green awning 10
+  fill(greenawning);
+  pushMatrix();
+  translate(110, 0);
+  beginShape();
+  vertex(100, 170);
+  vertex(120, 210);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  vertex(130, 170);
+  endShape(CLOSE);
+  // shadow awning 10
+  fill(shadowawning);
+  beginShape();
+  vertex(130, 170);
+  vertex(210, 170);
+  vertex(225, 210);
+  vertex(200, 190);
+  vertex(140, 190);
+  endShape(CLOSE);
+  pushMatrix();
+  translate(-880, 0);
+
+  color windowgreen = color(43, 47, 20);
+  color windowyellow = color(190, 130, 12);
+  color windowblack = color(13, 3, 1);
+
+  // window 1
+  fill(windowgreen);
+  rectMode(CORNER);
+  rect(40, 230, 60, 100);
+  fill(windowyellow);
+  rect(40, 230, 60, 40);
+  fill(windowblack);
+  rect(40, 310, 60, 20);
+  // window 2
+  fill(windowgreen);
+  rect(150, 230, 60, 100);
+  fill(windowyellow);
+  rect(150, 230, 60, 60);
+  // window 3
+  fill(windowgreen);
+  rect(260, 230, 60, 100);
+  fill(windowblack);
+  rect(260, 300, 60, 30);
+  // window 4
+  fill(windowgreen);
+  rect(370, 230, 60, 100);
+  // window 5
+  rect(480, 230, 60, 100);
+  fill(windowyellow);
+  rect(480, 230, 60, 50);
+  // window 6
+  fill(windowgreen);
+  rect(590, 230, 60, 100);
+  fill(windowyellow);
+  rect(590, 230, 60, 60);
+  // window 7
+  fill(windowgreen);
+  rect(700, 230, 60, 100);
+  fill(windowyellow);
+  rect(700, 230, 60, 50);
+  // window 8
+  fill(windowgreen);
+  rect(810, 230, 60, 100);
+  // window 9
+  rect(920, 230, 60, 100);
+  fill(windowblack);
+  rect(920, 230, 60, 40);
+  rect(920, 310, 60, 20);
+  // window 10
+  fill(windowgreen);
+  rect(1030, 230, 60, 100);
+  fill(windowyellow);
+  rect(1030, 230, 60, 50);
+
+  // green bit above the stores
+  // higher bit
+  fill(106, 81, 21);
+  rect(0, 335, 1100, 10);
+  // shadow bit
+  fill(42, 36, 20);
+  rect(0, 345, 1100, 10);
+  // lower bit
+  fill(74, 68, 23);
+  rect(0, 355, 1100, 25);
+
+
+  color windowbase = color(30, 29, 10);
+  color windowbottom = color(52, 58, 22);
+  // store window design 1
+  fill(windowbase);
+  rect(15, 380, 180, 180);
+  fill(windowbottom);
+  rect(15, 560, 180, 80);
+  // store curtain 1
+  fill(141, 96, 11);
+  rect(15, 380, 180, 60);
+  // store window text 1
+  stroke(73, 68, 39);
+  strokeWeight(6);
+  noFill();
+  curve(80, 482, 81, 483, 119, 483, 120, 482);
+  // store window design 2
+  noStroke();
+  fill(windowbase);
+  rect(250, 380, 180, 180);
+  fill(windowbottom);
+  rect(250, 560, 180, 80);
+  // store curtain 2
+  fill(141, 96, 11);
+  rect(250, 380, 180, 60);
+  // store window text 2
+  stroke(73, 68, 39);
+  strokeWeight(6);
+  noFill();
+  curve(320, 482, 321, 483, 359, 483, 360, 482);
+  // store window design 3
+  noStroke();
+  fill(windowbase);
+  rect(480, 380, 180, 180);
+  fill(windowbottom);
+  rect(480, 560, 180, 80);
+  // store curtain 3
+  fill(74, 68, 59);
+  rect(480, 380, 180, 30);
+  rect(480, 380, 20, 90);
+  rect(640, 380, 20, 90);
+  // store window text 3
+  stroke(73, 68, 39);
+  strokeWeight(6);
+  noFill();
+  arc(570, 475, 75, 75, radians(180), radians(360));
+  curve(560, 482, 561, 483, 579, 483, 580, 482);
+  // store window design 4
+  noStroke();
+  fill(windowbase);
+  rect(690, 380, 180, 180);
+  fill(windowbottom);
+  rect(690, 560, 180, 80);
+  // store window text 4
+  stroke(73, 68, 39);
+  strokeWeight(6);
+  noFill();
+  arc(780, 475, 75, 75, radians(180), radians(360));
+  curve(770, 482, 771, 483, 789, 483, 790, 482);
+  // store window design 5
+  noStroke();
+  fill(windowbase);
+  rect(900, 380, 180, 180);
+  fill(windowbottom);
+  rect(900, 560, 180, 80);
+  // store window text 5
+  stroke(73, 68, 39);
+  strokeWeight(6);
+  line(960, 460, 1020, 460);
+
+  noStroke();
+  pushMatrix();
+  translate(0, 50);
+  // sidewalk
+  fill(184, 153, 48);
+  rect(0, 600, 1100, 40);
+  // shadow on sidewalk
+  fill(65, 66, 2);
+  rect(0, 620, 1100, 5);
+
+  // fire hydrant's shadow
+  fill(82, 72, 20);
+  ellipseMode(CORNER);
+  ellipse(100, 630, 200, 10);
+  // fire hydrant
+  fill(128, 107, 45);
+  ellipseMode(CENTER);
+  ellipse(300, 610, 50, 95);
+  // top of fire hydrant
+  fill(139, 124, 90);
+  ellipse(300, 575, 45, 45);
+  // very top of fire hydrant
+  fill(129, 115, 81);
+  rectMode(CORNER);
+  rect(297, 550, 7, 7);
+  // fire hydrant side shadow
+  fill(0, 0, 0);
+  stroke(0, 0, 0);
+  beginShape();
+  curveVertex(300, 550);
+  curveVertex(300, 553);
+  curveVertex(278, 566);
+  curveVertex(278, 598);
+  curveVertex(278, 650);
+  curveVertex(300, 655);
+  endShape(CLOSE);
+  // fire hydrant faucets
+  fill(25, 29, 32);
+  ellipse(280, 600, 20, 20);
+  ellipse(320, 600, 20, 20);
+  // smaller faucets
+  fill(20, 20, 20);
+  ellipse(275, 600, 10, 10);
+  ellipse(325, 600, 10, 10);
+
+  color barberShopWhite = color(238, 210, 200);
+  color barberShopBlue = color(24, 64, 103);
+  color barberShopRed = color(155, 41, 19);
+  noStroke();
+
+  // BARBER SHOP POLE SHADOW
+  fill(36, 32, 1);
+  ellipseMode(CORNER);
+  ellipse(480, 597, 255, 10);
+
+  // BARBER SHOP POLE
+  // yellow top
+  fill(164, 129, 73);
+  stroke(164, 129, 73);
+  beginShape();
+  vertex(703, 450);
+  vertex(701, 445);
+  vertex(703, 450);
+  vertex(705, 450);
+  vertex(705, 435);
+  vertex(730, 435);
+  vertex(730, 450);
+  vertex(732, 450);
+  vertex(734, 445);
+  vertex(732, 450);
+  endShape(CLOSE);
+  // white very top
+  stroke(barberShopWhite);
+  fill(barberShopWhite);
+  ellipseMode(CENTER);
+  ellipse(718, 425, 36, 36);
+  // tiny shadow under yellow top
+  stroke(118, 92, 84);
+  strokeWeight(2);
+  line(703, 450, 732, 450);
+  // top white pole
+  noStroke();
+  fill(barberShopWhite);
+  quad(703, 503, 732, 503, 732, 450, 703, 450);
+  // top higher red line
+  fill(barberShopRed);
+  quad(703, 480, 703, 465, 732, 455, 732, 470);
+  // top lower blue line
+  fill(barberShopBlue);
+  quad(703, 503, 703, 488, 732, 478, 732, 493);
+  // red middle
+  fill(barberShopRed);
+  ellipseMode(CORNER);
+  ellipse(698, 503, 37, 7);
+  // white middle
+  fill(barberShopWhite);
+  beginShape();
+  vertex(700, 525);
+  vertex(703, 510);
+  vertex(732, 510);
+  vertex(735, 525);
+  endShape(CLOSE);
+  // tiny shadow under white middle
+  stroke(118, 92, 84);
+  strokeWeight(2);
+  line(700, 525, 735, 525);
+  // bottom white pole
+  noStroke();
+  fill(barberShopWhite);
+  quad(703, 525, 703, 570, 732, 570, 732, 525);
+  // bottom higher red line
+  fill(barberShopRed);
+  quad(703, 527, 703, 542, 732, 557, 732, 542);
+  // bottom lower red line
+  fill(barberShopRed);
+  quad(703, 550, 703, 565, 732, 580, 732, 565);
+  // blue bottom base
+  fill(barberShopBlue);
+  stroke(barberShopBlue);
+  beginShape();
+  vertex(700, 610);
+  vertex(700, 580);
+  vertex(705, 575);
+  vertex(700, 570);
+  vertex(735, 570);
+  vertex(730, 575);
+  vertex(735, 580);
+  vertex(735, 610);
+  endShape(CLOSE);
+
+
+  // shadow
+  noStroke();
+  fill(56, 58, 20);
+  rect(0, 640, 1100, 10);
+
+  // road
+  fill(201, 172, 78);
+  rect(0, 650, 1100, 50);
+
+  // me
+  textSize(32);
+  fill(8, 74, 252);
+  text("EMILY LOBEL", 600, 680); 
+  fill(8, 91, 252);
+  text("CS110 Fall 2016", 820, 680);
+} 
