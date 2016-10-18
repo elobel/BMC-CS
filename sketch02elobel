@@ -1,0 +1,208 @@
+/*****************************************************************
+ * Assignment #2
+ * Name: Emily Lobel
+ * E-mail: elobel@brynmawr.edu
+ * Course: CS 110-01 DK
+ * Date Submitted: September 22, 2016
+ *
+ * This assignment uses mouse interactivity to grow flowers
+ * of different sizes and colors on your windowsill! I enjoyed coding
+ * this. It was fun to randomize color and size. 
+ * I also enjoyed designing the background, a view out one's window.
+ * It was very relaxing to do!
+ ******************************************************************/
+
+void setup() {
+  size(500, 500);
+  background(144, 237, 255);
+
+  // grass
+  noStroke();
+  fill(7, 160, 79);
+  rect(0, 300, 500, 200);
+
+  // sidewalk
+  fill(228, 237, 199);
+  rect(0, 260, 500, 40);
+
+  // road
+  fill(0);
+  rect(0, 200, 500, 60);
+
+  // yellow stripes
+  fill(233, 255, 0);
+  rect(70, 225, 15, 5);
+  rect(140, 225, 15, 5);
+  rect(210, 225, 15, 5);
+  rect(280, 225, 15, 5);
+  rect(350, 225, 15, 5);
+  rect(420, 225, 15, 5);
+
+  // far grass
+  fill(7, 160, 79);
+  rect(0, 170, 500, 30);
+
+  // far sidewalk
+  fill(228, 237, 199);
+  rect(0, 160, 500, 10);
+
+  // sun
+  ellipseMode(CENTER);
+  fill(221, 255, 121);
+  ellipse(500, 0, 100, 100);
+
+  // trees
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  pushMatrix();
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  translate(65, 0);
+  fill(90, 27, 27);
+  rect(40, 120, 15, 40); // trunk
+  ellipseMode(CENTER);
+  fill(5, 129, 64); // leaves
+  ellipse(48, 110, 40, 40);
+  popMatrix();
+
+  // window sides
+  fill(88, 45, 34);
+  rectMode(CORNER);
+  rect(0, 0, 20, 500);
+  rect(480, 0, 20, 500);
+
+  // stems
+  strokeWeight(5);
+  stroke(99, 197, 22);
+  line(100, 350, 100, 230);
+  line(150, 200, 150, 400);
+  line(180, 100, 180, 400);
+  line(250, 240, 250, 400);
+  line(320, 100, 320, 400);
+  line(400, 230, 400, 400);
+
+  // leaves
+  ellipseMode(CORNER);
+  fill(99, 197, 22);
+  ellipse(80, 300, 20, 5);
+  ellipse(100, 250, 20, 5);
+  ellipse(160, 150, 20, 5);
+  ellipse(250, 300, 20, 5);
+  ellipse(280, 200, 40, 10);
+
+  // pot
+  fill(113, 70, 27);
+  noStroke();
+  beginShape();
+  vertex(80, 500);
+  vertex(80, 440);
+  vertex(40, 420);
+  vertex(40, 340);
+  vertex(70, 345);
+  vertex(100, 350);
+  vertex(130, 355);
+  vertex(160, 360);
+  vertex(190, 365);
+  vertex(250, 368);
+  vertex(310, 365);
+  vertex(340, 360);
+  vertex(370, 355);
+  vertex(400, 350);
+  vertex(430, 345);
+  vertex(460, 340);
+  vertex(460, 420);
+  vertex(420, 440);
+  vertex(420, 500);
+  endShape(CLOSE);
+  stroke(0);
+  noFill();
+
+  // pot shadow
+  beginShape();
+  curveVertex(80, 440);
+  curveVertex(80, 440);
+  curveVertex(250, 460);
+  curveVertex(420, 440);
+  curveVertex(420, 440);
+  endShape();
+
+  // me
+  textSize(24);
+  fill(8, 74, 252);
+  text("emily lobel", 220, 400); 
+  fill(8, 91, 252);
+  text("cs110 fall 2016", 220, 430);
+}// setup
+
+
+
+float x;
+float y;
+float w;
+float h;
+
+void draw() {
+  frameRate(15); 
+  if (mousePressed) {
+    drawFlower(mouseX, mouseY, random(30, 70), random(150, 250));
+  } //if
+} // draw
+
+
+
+// function definition
+void drawFlower(float x, float y, float w, float h) {
+
+  noStroke();
+
+  // flower petals
+  fill(random(255), random(255), random(255)); // randomize color
+  ellipseMode(CORNERS);
+  ellipse(x-h/2, y-w/2, x, y+w/2);
+  ellipse(x+h/2, y-w/2, x, y+w/2);
+  ellipse(x-w/2, y-h/2, x+w/2, y);
+  ellipse(x-w/2, y+h/2, x+w/2, y);
+
+  // flower center
+  noStroke();
+  ellipseMode(CENTER);
+  fill(220, 240, 157);
+  ellipse(x, y, 20, 20);
+}
