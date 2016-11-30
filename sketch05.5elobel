@@ -1,0 +1,178 @@
+/*****************************************************************
+ * Assignment #5.5 (Extra Credit)
+ * Name: Emily Lobel
+ * E-mail: elobel@brynmawr.edu
+ * Course: CS 110-01 DK
+ * Date Submitted: November 29, 2016
+ *
+ * This program analyzes the text of "The Wizard of Oz" and counts
+ * how many time the name of each character is mentioned. Then, it puts 
+ * the name in a pie chart. 
+ ******************************************************************/
+
+
+void setup() {
+  size(500, 500);
+  background(255);
+}
+
+void draw() {
+  background(255);
+
+  textSize(16);
+  fill(8, 74, 252);
+  text("Name Mentions in The Wizard of Oz by L. Frank Baum", 35, 30);
+  textSize(14);
+  text("Emily Lobel", 215, 50);
+
+  String[] lines = loadStrings("oz.txt");
+
+  //number
+  int nDorothy = count(lines, "dorothy");
+  int nScarecrow = count(lines, "glinda");
+  int nWoodman = count(lines, "woodman");
+  int nLion = count(lines, "lion");
+  int nGlinda = count(lines, "glinda");
+  int nWitch = count(lines, "witch");
+  int nAuntEm = count(lines, "aunt");
+  int nWizard = count(lines, "wizard") + count(lines, "oz");
+  int nToto = count(lines, "toto");
+  int total = nDorothy + nScarecrow + nWoodman + nLion + nGlinda + nWitch + nAuntEm + nWizard + nToto;
+
+  //percentages
+  float pDorothy = float (nDorothy)/(total);
+  float pScarecrow = float (nScarecrow)/(total);
+  float pWoodman = float (nWoodman)/(total);
+  float pLion = float (nLion)/(total);
+  float pGlinda = float (nGlinda)/(total);
+  float pWitch = float (nWitch)/(total);
+  float pAuntEm = float (nAuntEm)/(total);
+  float pWizard = float (nWizard)/(total);
+  float pToto = float (nToto)/(total);
+
+  //color
+  color cDorothy = color(45, 194, 224);
+  color cScarecrow = color(224, 198, 45);
+  color cWoodman = color(182, 185, 188);
+  color cLion = color(245, 217, 125);
+  color cGlinda = color(126, 240, 245);
+  color cWitch = color(7, 180, 78);
+  color cAuntEm = color(250, 135, 248);
+  color cWizard = color(224, 255, 0);
+  color cToto = color(62, 70, 3);
+
+  //pie variables
+  int x = width/2;
+  int y = height/2;
+  int pieSize=300;
+  float startAngle = 0;
+  float stopAngle = 0;
+
+  // Dorothy 1
+  fill(cDorothy);
+  textSize(14);
+  text("Dorothy", 355, 370);
+  textSize(10);
+  text(nDorothy, 355, 380);
+  noStroke();
+  stopAngle=pDorothy*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+  // Scarecrow 2 
+  fill(cScarecrow);
+  textSize(14);
+  text("Scarecrow", 175, 410);
+  textSize(10);
+  text(nScarecrow, 175, 420);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pScarecrow*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+  // Tin Woodman 3
+  fill(cWoodman);
+  textSize(14);
+  text("Tin Woodman", 25, 335);
+  textSize(10);
+  text(nWoodman, 25, 345);
+  startAngle = stopAngle;
+   stopAngle = startAngle + pWoodman*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+
+  // Cowardly Lion 4
+  fill(cLion);
+  textSize(14);
+  text("Cowardly Lion", 5, 225);
+  textSize(10);
+  text(nLion, 5, 235);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pLion*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+
+  // Glinda 5
+  fill(cGlinda);
+  textSize(14);
+  text("Glinda the Good", 15, 140);
+  textSize(10);
+  text(nGlinda, 15, 150);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pGlinda*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+
+  // Witch 6
+  fill(cWitch);
+  textSize(14);
+  text("The Wicked Witch", 100, 100);
+  textSize(10);
+  text(nWitch, 100, 110);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pWitch*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+
+  // Aunt Em 7
+  fill(cAuntEm);
+  textSize(14);
+  text("Aunt Em", 225, 80);
+  textSize(10);
+  text(nAuntEm, 225, 90);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pAuntEm*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+
+  // Wizard 8 
+  fill(cWizard);
+  textSize(14);
+  text("The Wizard of Oz", 350, 130);
+  textSize(10);
+  text(nWizard, 350, 140);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pWizard*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+
+  // Toto 9 
+  fill(cToto);
+  textSize(14);
+  text("Toto", 400, 220);
+  textSize(10);
+  text(nToto, 400, 230);
+  startAngle = stopAngle;
+  stopAngle = startAngle + pToto*TWO_PI;
+  arc(x, y, pieSize, pieSize, startAngle, stopAngle);
+}
+
+
+int count(String[] str, String word) {
+  int c = 0;
+  for (int i = 0; i < str.length; i++) {
+    String line = str[i].toLowerCase();
+    String[] words = splitTokens(line, "_");
+    if (line.indexOf(word)>= 0) {
+      c++;
+    }
+  }
+  return c;
+}
