@@ -1,0 +1,125 @@
+/*****************************************************************
+ * Assignment #5
+ * Name: Emily Lobel
+ * E-mail: elobel@brynmawr.edu
+ * Course: CS 110-01 DK
+ * Date Submitted: November 22, 2016
+ *
+ * This program uses interactivity and classes in order to show
+ * a bunch of rockets flying upwards in space. I really enjoyed
+ * doing this assignment! 
+ ******************************************************************/
+
+
+Rocket[] rockets;
+
+void setup() {
+  size(500, 500);
+  rockets = new Rocket[int(random(400, 1000))];
+  for (int i = 0; i < rockets.length; i++) {
+    rockets[i] = new Rocket();
+  } // for loop
+} //setup
+
+void draw() {
+  background(0);
+
+  for (int i = 0; i < rockets.length; i++) {
+    rockets[i].display();
+    rockets[i].move();
+    rockets[i].displayFire();
+  } //for
+} // draw
+
+void mousePressed() {
+  for (int i = 0; i < rockets.length; i++) {
+    if (rockets[i].contains(mouseX, mouseY)) {
+      rockets[i].speedUp();
+      rockets[i].fireFlare();
+      return;
+    } // if
+  } // for
+  rockets = (Rocket[])append(rockets, new Rocket());
+} //mousePressed
+
+
+class Rocket {
+  // attributes
+  float rocketX, rocketY;
+  float rocketSize;
+  color rocketColor;
+  float deltaX, deltaY;
+
+  // constructors
+  Rocket() {
+    rocketSize = random(15, 25);
+    rocketX = random(0, width);
+    rocketY = height+100;
+    rocketColor = color(random(255), random(255), random(255));
+    deltaY=random(0, 3);
+  } //constructor
+
+  void display() {
+    pushMatrix();
+    noStroke();
+    fill(rocketColor);
+    rectMode(CORNER);
+    rect(rocketX, rocketY, rocketSize-3, rocketSize);
+    triangle(rocketX-2, rocketY, rocketX+(rocketSize/2)-1, rocketY-(rocketSize/2), rocketX+(rocketSize)-1, rocketY);
+    fill(227, 245, 158);
+    ellipseMode(CENTER);
+    ellipse(rocketX+(rocketSize/2)-1, rocketY+(rocketSize/2), rocketSize/2, rocketSize/2);
+    popMatrix();
+  } // display
+
+  void displayFire() {
+    pushMatrix();
+    noStroke();
+    fill(255, 146, 62);
+    beginShape();
+    vertex(rocketX-1, rocketY+(rocketSize));
+    vertex(rocketX+(rocketSize/6)-1, rocketY+(rocketSize)+10);
+    vertex(rocketX+(rocketSize/3)-1, rocketY+(rocketSize));
+    vertex(rocketX+(rocketSize/2)-1, rocketY+(rocketSize)+10);
+    vertex(rocketX+(2*rocketSize/3)-1, rocketY+(rocketSize));
+    vertex(rocketX+(5*rocketSize/6)-1, rocketY+(rocketSize)+10);
+    vertex(rocketX+(rocketSize)-1, rocketY+(rocketSize));
+    endShape(CLOSE);
+    popMatrix();
+  } // display
+
+
+  void move() {
+    rocketY -= deltaY;
+  } // move
+
+  void speedUp() {
+    rocketY -= deltaY*50;
+  } // speedUp
+
+  void fireFlare() {
+    pushMatrix();
+    noStroke();
+    fill(255, 146, 62);
+    beginShape();
+    vertex(rocketX-1, rocketY+(rocketSize));
+    vertex(rocketX+(rocketSize/6)-1, rocketY+(rocketSize*5)+20);
+    vertex(rocketX+(rocketSize/3)-1, rocketY+(rocketSize));
+    vertex(rocketX+(rocketSize/2)-1, rocketY+(rocketSize*5)+20);
+    vertex(rocketX+(2*rocketSize/3)-1, rocketY+(rocketSize));
+    vertex(rocketX+(5*rocketSize/6)-1, rocketY+(rocketSize*5)+20);
+    vertex(rocketX+(rocketSize)-1, rocketY+(rocketSize));
+    endShape(CLOSE);
+    popMatrix();
+  } // fireFlare
+
+
+  boolean contains(float x, float y) {
+    if (x > rocketX && x < rocketX+rocketSize && y > rocketY && y < rocketY+rocketSize) {
+      return true;
+    } // if
+    return false;
+  } // contains
+  
+  
+} //class
